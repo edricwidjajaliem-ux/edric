@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Edric Lim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #f8f6f1;
+      --ink: #1a1916;
+      --muted: #7a7670;
+      --accent: #2c5f4a;
+      --border: #e2ded7;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 24px 60px;
+      background: rgba(248,246,241,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 400; letter-spacing: 0.02em;
+      color: var(--ink); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 400; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 160px 60px 72px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-eyebrow {
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+      opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+    }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+      opacity: 0; animation: fadeUp 0.7s ease 0.25s forwards;
+    }
+    .page-title em { font-style: italic; color: var(--accent); }
+    .page-sub {
+      margin-top: 20px;
+      font-size: 16px; color: var(--muted); max-width: 480px; line-height: 1.8;
+      opacity: 0; animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+
+    /* PROJECT LIST */
+    .projects-wrap { padding: 0 60px 100px; }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 160px auto;
+      align-items: center;
+      gap: 32px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: padding-left 0.25s ease;
+    }
+    .project-row::after {
+      content: '';
+      position: absolute; left: -60px; right: -60px; top: 0; bottom: 0;
+      background: rgba(44,95,74,0.03);
+      opacity: 0; transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .project-row:hover { padding-left: 8px; }
+    .project-row:hover::after { opacity: 1; }
+    .project-row:hover .row-num { color: var(--accent); }
+    .project-row:hover .row-title { color: var(--accent); }
+    .project-row:hover .row-arrow { transform: translateX(5px); color: var(--accent); }
+
+    .row-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px; font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      transition: color 0.25s;
+    }
+
+    .row-body { min-width: 0; }
+    .row-tag {
+      display: inline-block;
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(44,95,74,0.25);
+      padding: 3px 10px; border-radius: 2px;
+      margin-bottom: 10px;
+    }
+    .row-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 400;
+      color: var(--ink); line-height: 1.2;
+      margin-bottom: 8px;
+      transition: color 0.25s;
+    }
+    .row-desc {
+      font-size: 14px; color: var(--muted); line-height: 1.7;
+    }
+
+    .row-meta {
+      text-align: right;
+    }
+    .row-tools {
+      font-size: 12px; color: var(--muted); line-height: 1.8;
+    }
+    .row-tools span {
+      display: block;
+    }
+
+    .row-arrow {
+      font-size: 22px; color: var(--border);
+      transition: transform 0.25s ease, color 0.25s;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 32px 60px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer p { font-size: 13px; color: var(--muted); }
+    .footer-home {
+      font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-home:hover { color: var(--ink); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .stagger {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @media (max-width: 900px) {
+      .project-row { grid-template-columns: 56px 1fr auto; }
+      .row-meta { display: none; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .page-header { padding: 120px 24px 48px; }
+      .projects-wrap { padding: 0 24px 80px; }
+      .project-row { grid-template-columns: 44px 1fr auto; gap: 16px; padding: 28px 0; }
+      .row-num { font-size: 28px; }
+      .row-title { font-size: 22px; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Edric Lim</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="index.html#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <p class="page-eyebrow">Work</p>
+    <h1 class="page-title">My<br><em>Projects</em></h1>
+    <p class="page-sub">A collection of finance projects — models, research, and analysis. Click any project to see the full write-up and files.</p>
+  </div>
+
+  <!-- PROJECT LIST -->
+  <!-- ── HOW TO ADD A PROJECT ─────────────────────────────────────
+       1. Duplicate a .project-row block below
+       2. Update the href to the new project file (e.g. project-4.html)
+       3. Update the number, tag, title, description, and tools
+       4. Create the matching project-N.html file (duplicate project-1.html)
+  ──────────────────────────────────────────────────────────────── -->
+  <div class="projects-wrap">
+
+    <a class="project-row stagger" style="animation-delay:0.1s" href="project-1.html">
+      <span class="row-num">01</span>
+      <div class="row-body">
+        <span class="row-tag">Financial Modelling</span>
+        <h2 class="row-title">Stripe, Inc.: Valuing the $200B Digital Economy Infrastructure</h2>
+        <p class="row-desc">Developed a comprehensive five-year DCF and peer-benchmarked valuation model for Stripe, projecting an implied enterprise value of $210.5B driven by a transition into high-margin software infrastructure and 25% EBITDA margins.</p>
+      </div>
+      <div class="row-meta">
+        <div class="row-tools">
+          <span>Excel</span>
+          <span>Bloomberg</span>
+        </div>
+      </div>
+      <span class="row-arrow">→</span>
+    </a>
+
+    <a class="project-row stagger" style="animation-delay:0.2s" href="project-2.html">
+      <span class="row-num">02</span>
+      <div class="row-body">
+        <span class="row-tag">Equity Research</span>
+        <h2 class="row-title">Project Title Two</h2>
+        <p class="row-desc">One sentence summary of what this project covers and what you found.</p>
+      </div>
+      <div class="row-meta">
+        <div class="row-tools">
+          <span>Excel</span>
+          <span>Word</span>
+        </div>
+      </div>
+      <span class="row-arrow">→</span>
+    </a>
+
+    <a class="project-row stagger" style="animation-delay:0.3s" href="project-3.html">
+      <span class="row-num">03</span>
+      <div class="row-body">
+        <span class="row-tag">Macro Analysis</span>
+        <h2 class="row-title">Project Title Three</h2>
+        <p class="row-desc">One sentence summary of what this project covers and what you found.</p>
+      </div>
+      <div class="row-meta">
+        <div class="row-tools">
+          <span>Excel</span>
+          <span>PowerPoint</span>
+        </div>
+      </div>
+      <span class="row-arrow">→</span>
+    </a>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Edric Lim</p>
+    <a href="index.html" class="footer-home">← Back to home</a>
+  </footer>
+
+</body>
+</html>
