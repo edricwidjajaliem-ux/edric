@@ -8,18 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --cream: #f8f6f1;
       --ink: #1a1916;
       --muted: #7a7670;
       --accent: #2c5f4a;
       --border: #e2ded7;
-      --card: #ffffff;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--cream);
       color: var(--ink);
@@ -31,42 +27,24 @@
 
     /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 24px 60px;
-      background: rgba(248, 246, 241, 0.92);
+      background: rgba(248,246,241,0.92);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid transparent;
       transition: border-color 0.3s;
     }
     nav.scrolled { border-bottom-color: var(--border); }
-
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      color: var(--ink);
-      text-decoration: none;
+      font-size: 20px; font-weight: 400; letter-spacing: 0.02em;
+      color: var(--ink); text-decoration: none;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-
+    .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--ink); }
@@ -74,330 +52,137 @@
     /* HERO */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      display: flex; flex-direction: column; justify-content: flex-end;
       padding: 0 60px 80px;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-
     .hero-bg {
-      position: absolute;
-      top: 0; right: 0;
-      width: 45%;
-      height: 100%;
+      position: absolute; top: 0; right: 0;
+      width: 45%; height: 100%;
       background: linear-gradient(135deg, #e8e4da 0%, #d4cfc4 100%);
       z-index: 0;
     }
-
     .hero-bg::after {
       content: '';
-      position: absolute;
-      bottom: 60px; left: -40px;
+      position: absolute; bottom: 60px; left: -40px;
       width: 120px; height: 120px;
-      border: 1px solid rgba(44, 95, 74, 0.2);
-      border-radius: 50%;
+      border: 1px solid rgba(44,95,74,0.2); border-radius: 50%;
     }
-
     .hero-content { position: relative; z-index: 1; max-width: 680px; }
-
     .hero-eyebrow {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.2s forwards;
+      font-size: 12px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
     }
-
     .hero-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(56px, 8vw, 96px);
-      font-weight: 300;
-      line-height: 1.0;
-      letter-spacing: -0.01em;
-      margin-bottom: 28px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.4s forwards;
+      font-weight: 300; line-height: 1.0; letter-spacing: -0.01em; margin-bottom: 28px;
+      opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
     }
-
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
+    .hero-name em { font-style: italic; color: var(--accent); }
     .hero-bio {
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 480px;
-      line-height: 1.8;
-      margin-bottom: 40px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.6s forwards;
+      font-size: 16px; color: var(--muted);
+      max-width: 480px; line-height: 1.8; margin-bottom: 40px;
+      opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards;
     }
-
     .hero-links {
-      display: flex;
-      gap: 16px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.8s forwards;
+      display: flex; gap: 16px;
+      opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards;
     }
-
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
       padding: 12px 28px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.2s;
-      cursor: pointer;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px; transition: all 0.2s; cursor: pointer;
     }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      border: 1px solid var(--accent);
-    }
+    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
     .btn-primary:hover { background: #234d3c; border-color: #234d3c; }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid var(--border);
-    }
+    .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--border); }
     .btn-outline:hover { border-color: var(--ink); }
 
-    /* SECTIONS */
-    section { padding: 100px 60px; }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
+    /* ABOUT */
+    .about {
+      padding: 100px 60px;
+      border-top: 1px solid var(--border);
     }
-
+    .section-label {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(36px, 4vw, 52px);
-      font-weight: 300;
-      line-height: 1.15;
-      margin-bottom: 48px;
+      font-weight: 300; line-height: 1.15; margin-bottom: 48px;
     }
-
-    /* ABOUT */
-    .about { border-top: 1px solid var(--border); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      margin-bottom: 20px;
-      line-height: 1.9;
-    }
-
-    .about-details { padding-top: 8px; }
-
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 20px; line-height: 1.9; }
     .detail-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
     }
-
-    .detail-label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .detail-value {
-      font-size: 14px;
-      color: var(--ink);
-      font-weight: 400;
-    }
-
-    /* PROJECTS */
-    .projects { background: var(--ink); }
-    .projects .section-label { color: #7a9e91; }
-    .projects .section-title { color: var(--cream); }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .project-card {
-      background: var(--ink);
-      padding: 40px 36px;
-      transition: background 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .project-card:hover { background: #242320; }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 0;
-      background: var(--accent);
-      transition: height 0.3s ease;
-    }
-    .project-card:hover::before { height: 100%; }
-
-    .project-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
-      color: rgba(255,255,255,0.2);
-      margin-bottom: 28px;
-      letter-spacing: 0.08em;
-    }
-
-    .project-tag {
-      display: inline-block;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #7a9e91;
-      border: 1px solid rgba(122, 158, 145, 0.3);
-      padding: 4px 10px;
-      border-radius: 2px;
-      margin-bottom: 16px;
-    }
-
-    .project-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 400;
-      color: var(--cream);
-      line-height: 1.3;
-      margin-bottom: 14px;
-    }
-
-    .project-desc {
-      font-size: 14px;
-      color: rgba(248, 246, 241, 0.45);
-      line-height: 1.8;
-      margin-bottom: 28px;
-    }
-
-    .project-link {
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.2s;
-    }
-    .project-link:hover { gap: 10px; }
+    .detail-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .detail-value { font-size: 14px; color: var(--ink); font-weight: 400; }
 
     /* CONNECT */
-    .connect { border-top: 1px solid var(--border); text-align: center; }
-
+    .connect {
+      padding: 100px 60px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
     .connect .section-title { margin-bottom: 16px; }
-
-    .connect-sub {
-      color: var(--muted);
-      margin-bottom: 40px;
-      font-size: 15px;
-    }
-
-    .connect-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+    .connect-sub { color: var(--muted); margin-bottom: 40px; font-size: 15px; }
+    .connect-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 
     /* FOOTER */
     footer {
-      padding: 32px 60px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 32px 60px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
     }
+    footer p { font-size: 13px; color: var(--muted); }
 
-    footer p {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
       .hero { padding: 0 24px 60px; }
-      section { padding: 70px 24px; }
+      .about, .connect { padding: 70px 24px; }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .projects-grid { grid-template-columns: 1fr; }
       footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="nav">
-    <a href="#" class="nav-logo">Edric Lim</a>
+    <a href="index.html" class="nav-logo">Edric Lim</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="projects.html">Projects</a></li>
       <li><a href="#connect">Connect</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="home">
+  <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
       <p class="hero-eyebrow">Finance Student</p>
       <h1 class="hero-name">Edric<br><em>Lim</em></h1>
       <p class="hero-bio">
         Exploring the intersection of financial analysis, markets, data-driven decision making, and tech.
-        Open to opportunities in investment, strategy, corporate finance, and fintech.
+        Open to opportunities in investment, corporate finance, and fintech.
       </p>
       <div class="hero-links">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="https://www.linkedin.com/in/edricwidjajalim" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+        <a href="projects.html" class="btn btn-primary">View Projects</a>
+        <a href="https://www.linkedin.com/in/edricwidjajalim/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
       </div>
     </div>
   </section>
@@ -410,83 +195,16 @@
     </div>
     <div class="about-grid reveal">
       <div class="about-text">
-        <p>
-          I'm Edric, a finance student at De Anza College currently based in California,
-          originally from Jakarta, Indonesia. My background has shaped a strong interest in global markets,
-          cross-border finance, and emerging economies.
-        </p>
-        <p>
-          Outside of coursework, I spend time on personal investing research,
-          following macro trends, and working on finance projects that challenge
-          my analytical thinking.
-        </p>
-       
-        </p>
+        <p>I'm Edric, a finance student at De Anza College currently based in California, originally from Jakarta, Indonesia. My background has shaped a strong interest in global markets, cross-border finance, and emerging economies.</p>
+        <p>Outside of coursework, I spend time on personal investing research, following macro trends, and working on finance projects that challenge my analytical thinking.</p>
       </div>
-      <div class="about-details">
-        <div class="detail-item">
-          <span class="detail-label">Status</span>
-          <span class="detail-value">Finance Student</span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-label">University</span>
-          <span class="detail-value">De Anza College</span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-label">Interests</span>
-          <span class="detail-value">Markets, Valuation, Tech</span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-label">Location</span>
-          <span class="detail-value">California</span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-label">Open to</span>
-          <span class="detail-value">Internships & Opportunities</span>
-        </div>
+      <div>
+        <div class="detail-item"><span class="detail-label">Status</span><span class="detail-value">Finance Student</span></div>
+        <div class="detail-item"><span class="detail-label">University</span><span class="detail-value">De Anza College</span></div>
+        <div class="detail-item"><span class="detail-label">Interests</span><span class="detail-value">Markets, Valuation, Tech</span></div>
+        <div class="detail-item"><span class="detail-label">Location</span><span class="detail-value">California</span></div>
+        <div class="detail-item"><span class="detail-label">Open to</span><span class="detail-value">Internships & Opportunities</span></div>
       </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="projects" id="projects">
-    <div class="reveal">
-      <p class="section-label">Work</p>
-      <h2 class="section-title">Projects</h2>
-    </div>
-    <div class="projects-grid reveal">
-
-      <div class="project-card">
-        <p class="project-num">01</p>
-        <span class="project-tag">Valuation Analysis</span>
-        <h3 class="project-title">Project Title One</h3>
-        <p class="project-desc">
-          Describe what you did here — e.g. built a DCF model, analysed a sector,
-          produced a research report. What was the outcome or insight?
-        </p>
-        <a href="#" class="project-link">View project →</a>
-      </div>
-
-      <div class="project-card">
-        <p class="project-num">02</p>
-        <span class="project-tag">Research</span>
-        <h3 class="project-title"> Upcoming Project Two</h3>
-        <p class="project-desc">
-          Incoming...
-        </p>
-        <a href="#" class="project-link">View project →</a>
-      </div>
-
-      <div class="project-card">
-        <p class="project-num">03</p>
-        <span class="project-tag">Analysis</span>
-        <h3 class="project-title">Upcoming Project Three</h3>
-        <p class="project-desc">
-          Incoming...
-        </p>
-        <a href="#" class="project-link">View project →</a>
-      </div>
-
     </div>
   </section>
 
@@ -495,41 +213,30 @@
     <div class="reveal">
       <p class="section-label">Contact</p>
       <h2 class="section-title">Let's connect</h2>
-      <p class="connect-sub">I'm currently seeking internship opportunities in investment, fintech, and strategy.
-      Feel free to reach out to discuss opportunities, finance, or markets.
-      </p>
+      <p class="connect-sub">Always happy to chat about finance, markets, or opportunities.</p>
       <div class="connect-links">
         <a href="mailto:edricwidjajaliem@gmail.com" class="btn btn-primary">Email me</a>
         <a href="https://www.linkedin.com/in/edricwidjajalim/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-        <a href="resume.pdf" target="_blank" class="btn btn-outline">Resume PDF ↗</a>
+        <a href="files/resume.pdf" target="_blank" class="btn btn-outline">Resume ↗</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 Edric Lim</p>
     <p>edriclim.com</p>
   </footer>
 
   <script>
-    // Nav shadow on scroll
-    const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
     });
-
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 100);
-        }
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 120);
       });
     }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
-
 </body>
 </html>
