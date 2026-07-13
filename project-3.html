@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon — Edric Lim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #f8f6f1;
+      --ink: #1a1916;
+      --muted: #7a7670;
+      --accent: #2c5f4a;
+      --border: #e2ded7;
+    }
+    html, body { height: 100%; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 24px 60px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 400; letter-spacing: 0.02em;
+      color: var(--ink); text-decoration: none;
+    }
+    .nav-back {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--ink); }
+    .nav-back-arrow { display: inline-block; transition: transform 0.2s; }
+    .nav-back:hover .nav-back-arrow { transform: translateX(-3px); }
+
+    /* MAIN */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+    }
+
+    .eyebrow {
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+    }
+
+    .headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 300; line-height: 1.05;
+      margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.7s ease 0.25s forwards;
+    }
+    .headline em { font-style: italic; color: var(--accent); }
+
+    .subtext {
+      font-size: 16px; color: var(--muted);
+      max-width: 400px; line-height: 1.8; margin-bottom: 40px;
+      opacity: 0; animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      background: var(--accent); color: #fff; border: 1px solid var(--accent);
+      transition: background 0.2s;
+      opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards;
+    }
+    .back-btn:hover { background: #234d3c; }
+
+    /* FOOTER */
+    footer {
+      padding: 24px 60px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer p { font-size: 13px; color: var(--muted); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      nav, footer { padding: 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Edric Lim</a>
+    <a href="projects.html" class="nav-back">
+      <span class="nav-back-arrow">←</span> All projects
+    </a>
+  </nav>
+
+  <main>
+    <p class="eyebrow">Project 03</p>
+    <h1 class="headline">Oops, you<br>caught me <em>early.</em></h1>
+    <p class="subtext">This project is still in the works. Check back soon — something interesting is coming.</p>
+    <a href="projects.html" class="back-btn">← Back to projects</a>
+  </main>
+
+  <footer>
+    <p>© 2026 Edric Lim</p>
+    <p>edriclim.com</p>
+  </footer>
+
+</body>
+</html>
