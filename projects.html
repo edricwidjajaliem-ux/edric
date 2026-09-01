@@ -25,7 +25,7 @@
       line-height: 1.7;
       font-size: 16px;
     }
-
+ 
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -47,7 +47,7 @@
       transition: color 0.2s;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--ink); }
-
+ 
     /* PAGE HEADER */
     .page-header {
       padding: 160px 60px 72px;
@@ -70,10 +70,10 @@
       font-size: 16px; color: var(--muted); max-width: 480px; line-height: 1.8;
       opacity: 0; animation: fadeUp 0.7s ease 0.4s forwards;
     }
-
+ 
     /* PROJECT LIST */
     .projects-wrap { padding: 0 60px 100px; }
-
+ 
     .project-row {
       display: grid;
       grid-template-columns: 80px 1fr 160px auto;
@@ -98,7 +98,7 @@
     .project-row:hover .row-num { color: var(--accent); }
     .project-row:hover .row-title { color: var(--accent); }
     .project-row:hover .row-arrow { transform: translateX(5px); color: var(--accent); }
-
+ 
     .row-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 40px; font-weight: 300;
@@ -106,7 +106,7 @@
       line-height: 1;
       transition: color 0.25s;
     }
-
+ 
     .row-body { min-width: 0; }
     .row-tag {
       display: inline-block;
@@ -126,7 +126,7 @@
     .row-desc {
       font-size: 14px; color: var(--muted); line-height: 1.7;
     }
-
+ 
     .row-meta {
       text-align: right;
     }
@@ -136,13 +136,13 @@
     .row-tools span {
       display: block;
     }
-
+ 
     .row-arrow {
       font-size: 22px; color: var(--border);
       transition: transform 0.25s ease, color 0.25s;
       flex-shrink: 0;
     }
-
+ 
     /* FOOTER */
     footer {
       padding: 32px 60px; border-top: 1px solid var(--border);
@@ -154,7 +154,7 @@
       color: var(--muted); text-decoration: none; transition: color 0.2s;
     }
     .footer-home:hover { color: var(--ink); }
-
+ 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -163,7 +163,7 @@
       opacity: 0; transform: translateY(20px);
       animation: fadeUp 0.6s ease forwards;
     }
-
+ 
     @media (max-width: 900px) {
       .project-row { grid-template-columns: 56px 1fr auto; }
       .row-meta { display: none; }
@@ -181,7 +181,7 @@
   </style>
 </head>
 <body>
-
+ 
   <nav>
     <a href="index.html" class="nav-logo">Edric Lim</a>
     <ul class="nav-links">
@@ -190,14 +190,14 @@
       <li><a href="index.html#connect">Connect</a></li>
     </ul>
   </nav>
-
+ 
   <!-- PAGE HEADER -->
   <div class="page-header">
     <p class="page-eyebrow">Work</p>
     <h1 class="page-title">My<br><em>Projects</em></h1>
     <p class="page-sub">A collection of finance projects — models, research, and analysis. Click any project to see the full write-up and files.</p>
   </div>
-
+ 
   <!-- PROJECT LIST -->
   <!-- ── HOW TO ADD A PROJECT ─────────────────────────────────────
        1. Duplicate a .project-row block below
@@ -206,13 +206,13 @@
        4. Create the matching project-N.html file (duplicate project-1.html)
   ──────────────────────────────────────────────────────────────── -->
   <div class="projects-wrap">
-
+ 
     <a class="project-row stagger" style="animation-delay:0.1s" href="project-1.html">
       <span class="row-num">01</span>
       <div class="row-body">
         <span class="row-tag">Strategic Valuation</span>
         <h2 class="row-title">Stripe Inc. — IPO Readiness Analysis</h2>
-        <p class="row-desc">Blended DCF, comps & IPO scenario analysis yielding a $173.7B target EV and BUY recommendation.</p>
+        <p class="row-desc">Blended DCF, comps & IPO scenario analysis yielding a $174.9B target EV and BUY recommendation.</p>
       </div>
       <div class="row-meta">
         <div class="row-tools">
@@ -222,7 +222,7 @@
       </div>
       <span class="row-arrow">→</span>
     </a>
-
+ 
     <a class="project-row stagger" style="animation-delay:0.2s" href="project-2.html">
       <span class="row-num">02</span>
       <div class="row-body">
@@ -238,7 +238,7 @@
       </div>
       <span class="row-arrow">→</span>
     </a>
-
+ 
     <div class="project-row stagger" style="animation-delay:0.3s;opacity:0.45;cursor:default;">
       <span class="row-num" style="color:var(--border);">03</span>
       <div class="row-body">
@@ -251,13 +251,13 @@
       </div>
       <span class="row-arrow" style="color:var(--border);">—</span>
     </div>
-
+ 
   </div>
-
+ 
   <footer>
     <p>© 2026 Edric Lim</p>
     <a href="index.html" class="footer-home">← Back to home</a>
   </footer>
-
+ 
 </body>
 </html>
