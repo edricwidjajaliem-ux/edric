@@ -4,240 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Edric Lim</title>
+  <meta name="description" content="Edric Lim, Economics at UC Berkeley. Interested in how AI will reshape the global economy, especially in emerging markets like Indonesia." />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --cream: #f8f6f1;
-      --ink: #1a1916;
-      --muted: #7a7670;
-      --accent: #2c5f4a;
-      --border: #e2ded7;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      font-size: 16px;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 24px 60px;
-      background: rgba(248,246,241,0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s;
-    }
-    nav.scrolled { border-bottom-color: var(--border); }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px; font-weight: 400; letter-spacing: 0.02em;
-      color: var(--ink); text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-size: 13px; font-weight: 400; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--muted); text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--ink); }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 60px 80px;
-      position: relative; overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; top: 0; right: 0;
-      width: 45%; height: 100%;
-      background: linear-gradient(135deg, #e8e4da 0%, #d4cfc4 100%);
-      z-index: 0;
-    }
-    .hero-bg::after {
-      content: '';
-      position: absolute; bottom: 60px; left: -40px;
-      width: 120px; height: 120px;
-      border: 1px solid rgba(44,95,74,0.2); border-radius: 50%;
-    }
-    .hero-content { position: relative; z-index: 1; max-width: 680px; }
-    .hero-eyebrow {
-      font-size: 12px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 20px;
-      opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
-    }
-    .hero-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(56px, 8vw, 96px);
-      font-weight: 300; line-height: 1.0; letter-spacing: -0.01em; margin-bottom: 28px;
-      opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
-    }
-    .hero-name em { font-style: italic; color: var(--accent); }
-    .hero-bio {
-      font-size: 16px; color: var(--muted);
-      max-width: 480px; line-height: 1.8; margin-bottom: 40px;
-      opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards;
-    }
-    .hero-links {
-      display: flex; gap: 16px;
-      opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards;
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 28px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
-      text-decoration: none; border-radius: 2px; transition: all 0.2s; cursor: pointer;
-    }
-    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
-    .btn-primary:hover { background: #234d3c; border-color: #234d3c; }
-    .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--border); }
-    .btn-outline:hover { border-color: var(--ink); }
-
-    /* ABOUT */
-    .about {
-      padding: 100px 60px;
-      border-top: 1px solid var(--border);
-    }
-    .section-label {
-      font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(36px, 4vw, 52px);
-      font-weight: 300; line-height: 1.15; margin-bottom: 48px;
-    }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .about-text p { color: var(--muted); margin-bottom: 20px; line-height: 1.9; }
-    .detail-item {
-      display: flex; justify-content: space-between; align-items: baseline;
-      padding: 16px 0; border-bottom: 1px solid var(--border);
-    }
-    .detail-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-    .detail-value { font-size: 14px; color: var(--ink); font-weight: 400; }
-
-    /* CONNECT */
-    .connect {
-      padding: 100px 60px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-    .connect .section-title { margin-bottom: 16px; }
-    .connect-sub { color: var(--muted); margin-bottom: 40px; font-size: 15px; }
-    .connect-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-
-    /* FOOTER */
-    footer {
-      padding: 32px 60px; border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    footer p { font-size: 13px; color: var(--muted); }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 768px) {
-      nav { padding: 20px 24px; }
-      .nav-links { display: none; }
-      .hero { padding: 0 24px 60px; }
-      .about, .connect { padding: 70px 24px; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
-    }
+    :root { --bg: #f8f6f1; --ink: #1f4a39; --muted: #5f7a6d; --faint: #93a89d; --accent: #2c5f4a; --line: #dfe5df; }
+    html { background: var(--bg); }
+    body { background: var(--bg); color: var(--ink); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    main { max-width: 580px; margin: 0 auto; padding: 96px 24px 72px; }
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+    a:hover { border-bottom-color: var(--accent); }
+    h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 44px; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 8px; color: var(--accent); }
+    .school { font-size: 19px; margin-bottom: 2px; }
+    .meta { font-size: 16px; color: var(--muted); margin-bottom: 44px; }
+    .meta .sep { color: var(--faint); padding: 0 6px; }
+    .bio { margin-bottom: 56px; }
+    .label { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
+    .projects { list-style: none; border-top: 1px solid var(--line); margin-bottom: 56px; }
+    .projects li { border-bottom: 1px solid var(--line); }
+    .row { display: block; padding: 18px 0; color: inherit; border-bottom: none; }
+    a.row:hover .title { color: var(--accent); }
+    .row-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+    .title { font-size: 19px; font-weight: 500; transition: color 0.15s; }
+    .tag { font-size: 14px; color: var(--faint); white-space: nowrap; }
+    .result { font-size: 16px; color: var(--muted); margin-top: 2px; line-height: 1.55; }
+    .soon .title { color: var(--faint); font-weight: 400; }
+    .contact { font-size: 16px; color: var(--muted); }
+    .contact .sep { color: var(--faint); padding: 0 6px; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    h1, .school, .meta, .bio, .label, .projects li, .contact { opacity: 0; animation: rise .6s ease forwards; }
+    h1 { animation-delay: .05s; } .school { animation-delay: .15s; } .meta { animation-delay: .25s; } .bio { animation-delay: .35s; } .label { animation-delay: .45s; }
+    .projects li:nth-child(1) { animation-delay: .55s; } .projects li:nth-child(2) { animation-delay: .65s; } .projects li:nth-child(3) { animation-delay: .75s; } .contact { animation-delay: .85s; }
+    @media (prefers-reduced-motion: reduce) { h1, .school, .meta, .bio, .label, .projects li, .contact { opacity: 1; animation: none; } }
+    @media (max-width: 520px) { main { padding: 64px 20px 56px; } h1 { font-size: 38px; } body { font-size: 17px; } .row-top { flex-direction: column; gap: 0; } }
   </style>
 </head>
 <body>
+  <main>
+    <h1>Edric Lim</h1>
+    <p class="school">UC Berkeley, Economics</p>
+    <p class="meta">
+      Berkeley, CA / Jakarta, Indonesia<span class="sep">|</span>Class of 2028<span class="sep">|</span><a href="files/resume.pdf" target="_blank" style="font-weight:500;">Resume</a>
+    </p>
 
-  <nav id="nav">
-    <a href="index.html" class="nav-logo">Edric Lim</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="#connect">Connect</a></li>
+    <p class="bio">I'm interested in how AI will reshape the global economy, especially in emerging markets like Indonesia.</p>
+
+    <p class="label" id="projects">Projects</p>
+    <ul class="projects">
+      <li>
+        <a class="row" href="project-1.html">
+          <div class="row-top"><span class="title">Stripe IPO readiness analysis</span><span class="tag">Valuation</span></div>
+          <p class="result">$174.9B blended EV, +9.98% upside to the $159B private valuation, BUY.</p>
+        </a>
+      </li>
+      <li>
+        <a class="row" href="project-2.html">
+          <div class="row-top"><span class="title">US + SE Asia M&amp;A screener</span><span class="tag">Python</span></div>
+          <p class="result">38 companies across 5 markets with live FX, plus a manual memo on PT AKR Corporindo.</p>
+        </a>
+      </li>
+      <li class="soon">
+        <div class="row"><div class="row-top"><span class="title">Something is baking</span><span class="tag">Soon</span></div></div>
+      </li>
     </ul>
-  </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"><img src="images/edric.jpg" alt="Edric Lim" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" /></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Economics Student · UC Berkeley</p>
-      <h1 class="hero-name">Edric<br><em>Lim</em></h1>
-      <p class="hero-bio">
-        Exploring the intersection of financial analysis, markets, and data-driven decision making.
-        Open to opportunities in investment, strategy, and corporate finance.
-      </p>
-      <div class="hero-links">
-        <a href="projects.html" class="btn btn-primary">View Projects</a>
-        <a href="https://linkedin.com/in/edricwidjajalim" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="reveal">
-      <p class="section-label">About</p>
-      <h2 class="section-title">Background &<br>Interests</h2>
-    </div>
-    <div class="about-grid reveal">
-      <div class="about-text">
-        <p>I'm Edric, an Economics student at UC Berkeley with a strong interest in finance, currently based in California, originally from Jakarta, Indonesia. My background has shaped a strong interest in global markets, cross-border finance, and emerging economies.</p>
-        <p>Outside of class I'm either deep in a financial model, watching macro unfold in real time, or figuring out why Southeast Asia is still underrated by most of Wall Street. Usually all three at once. When I'm not doing that, I'm at the poker table or settling the Messi vs Ronaldo debate — still ongoing.</p>
-      </div>
-      <div>
-        <div class="detail-item"><span class="detail-label">Status</span><span class="detail-value">Economics Student</span></div>
-        <div class="detail-item"><span class="detail-label">University</span><span class="detail-value">UC Berkeley · Class of 2028</span></div>
-        <div class="detail-item"><span class="detail-label">Interests</span><span class="detail-value">Markets, Valuation, Strategy</span></div>
-        <div class="detail-item"><span class="detail-label">Location</span><span class="detail-value">California</span></div>
-        <div class="detail-item"><span class="detail-label">Open to</span><span class="detail-value">Internships & Opportunities</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONNECT -->
-  <section class="connect" id="connect">
-    <div class="reveal">
-      <p class="section-label">Contact</p>
-      <h2 class="section-title">Let's connect</h2>
-      <p class="connect-sub">Always happy to chat about finance, markets, or opportunities.</p>
-      <div class="connect-links">
-        <a href="mailto:your@email.com" class="btn btn-primary">Email me</a>
-        <a href="https://linkedin.com/in/edricwidjajalim" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-        <a href="files/resume.pdf" target="_blank" class="btn btn-outline">Resume ↗</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2026 Edric Lim</p>
-    <p>edriclim.com</p>
-  </footer>
-
-  <script>
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
-    });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 120);
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+    <p class="contact">
+      <a href="mailto:edric_lim@berkeley.edu">edric_lim@berkeley.edu</a><span class="sep">|</span><a href="https://linkedin.com/in/edricwidjajalim" target="_blank">LinkedIn</a><span class="sep">|</span><a href="https://github.com/edricwidjajaliem-ux" target="_blank">GitHub</a>
+    </p>
+  </main>
 </body>
 </html>
