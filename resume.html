@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume — Edric Lim</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #f8f6f1; --ink: #1f4a39; --muted: #5f7a6d; --faint: #93a89d; --accent: #2c5f4a; --line: #dfe5df; }
+    html { background: var(--bg); }
+    body { background: var(--bg); color: var(--ink); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    main { max-width: 860px; margin: 0 auto; padding: 40px 24px 72px; }
+    a { color: var(--accent); text-decoration: none; }
+    .home { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; padding: 8px 18px; border-radius: 999px; background: #ecebe4; color: var(--ink); transition: background .15s; margin-bottom: 40px; }
+    .home:hover { background: #e2e1d8; }
+    h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 46px; line-height: 1.1; letter-spacing: -0.01em; color: var(--accent); margin-bottom: 6px; }
+    .meta { font-size: 16px; color: var(--muted); margin-bottom: 28px; }
+    .meta a { color: var(--ink); border-bottom: 1px solid var(--faint); }
+    .meta a:hover { border-bottom-color: var(--accent); }
+    .frame { border: 1px solid var(--line); border-radius: 12px; padding: 12px; background: #fff; }
+    .frame iframe { display: block; width: 100%; height: 1100px; border: 0; border-radius: 6px; background: #fff; }
+    @media (max-width: 700px) { main { padding: 28px 16px 56px; } h1 { font-size: 36px; } .frame { padding: 6px; } .frame iframe { height: 75vh; } }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="home" href="index.html">← Home</a>
+    <h1>Resume</h1>
+    <p class="meta">Updated 2026-10-10. <a href="files/resume.pdf" target="_blank">Open the PDF</a>.</p>
+    <div class="frame">
+      <iframe src="files/resume.pdf#view=FitH" title="Edric Lim resume"></iframe>
+    </div>
+  </main>
+</body>
+</html>
