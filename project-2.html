@@ -6,8 +6,10 @@
   <title>US + SE Asia M&A screener — Edric Lim</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet" />
   <style>
+    main { animation: pagein .35s ease both; }
     @view-transition { navigation: auto; }
     @keyframes pagein { from { opacity: 0; } to { opacity: 1; } }
     ::view-transition-old(root) { animation: .18s ease both fadeout; }
@@ -38,7 +40,7 @@
     ul.plain li { padding-left: 18px; position: relative; margin-bottom: 12px; }
     ul.plain li::before { content: "–"; position: absolute; left: 0; color: var(--faint); }
     .shots { display: flex; flex-direction: column; gap: 16px; }
-    .shots img { width: 100%; border: 1px solid var(--line); border-radius: 4px; display: block; }
+    .shots img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; display: block; }
     .files { list-style: none; border-top: 1px solid var(--line); }
     .files li { border-bottom: 1px solid var(--line); }
     .files a { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: none; }
@@ -93,8 +95,8 @@
 
     <h2>The tool in action</h2>
     <div class="shots">
-      <img src="images/screener-preview-1.png" alt="M&amp;A screener showing screening filters and results table" />
-      <img src="images/screener-preview-2.png" alt="M&amp;A screener showing the AI deal memo generator" />
+      <img src="images/screener-preview-1.png" width="2010" height="1264" loading="eager" decoding="async" alt="M&amp;A screener showing screening filters and results table" />
+      <img src="images/screener-preview-2.png" width="2056" height="1270" loading="lazy" decoding="async" alt="M&amp;A screener showing the AI deal memo generator" />
     </div>
 
     <h2 id="honest">How the agent stays honest</h2>
