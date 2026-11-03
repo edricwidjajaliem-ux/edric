@@ -37,9 +37,14 @@
     .files li { border-bottom: 1px solid var(--line); }
     .files a { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: none; }
     .files .d { color: var(--faint); font-size: 15px; }
+    .jump { font-size: 14px; color: var(--faint); margin: -24px 0 36px; }
+    .jump a { color: var(--muted); } .jump a:hover { color: var(--accent); }
+    .jump .sep { padding: 0 8px; }
+    .numbers .v { max-width: 62%; }
+    h2[id] { scroll-margin-top: 24px; }
     .pn { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; font-size: 16px; }
     .pn .hint { display: block; font-size: 14px; color: var(--faint); }
-    @media (max-width: 520px) { main { padding: 40px 20px 56px; } h1 { font-size: 34px; } body { font-size: 17px; } .meta .sep { display: none; } .meta span.i { display: block; } }
+    @media (max-width: 520px) { .numbers li { flex-direction: column; gap: 2px; } .numbers .v { text-align: left; max-width: none; } .jump { margin-top: -16px; } main { padding: 40px 20px 56px; } h1 { font-size: 34px; } body { font-size: 17px; } .meta .sep { display: none; } .meta span.i { display: block; } }
   </style>
 </head>
 <body>
@@ -47,28 +52,37 @@
     <a class="back" href="index.html#projects">← Edric Lim</a>
 
     <h1>US + SE Asia M&amp;A screener</h1>
-    <p class="meta"><span class="i">Python, Streamlit, Claude API</span><span class="sep">|</span><span class="i">July 2026</span></p>
-    <p class="summary">A cross-border M&amp;A screening tool covering 38 companies across five markets (the US, Indonesia, Singapore, Malaysia, and Thailand), with live FX normalization and an AI-generated deal memo for any company that clears the filters.</p>
+    <p class="meta"><span class="i">Python, Streamlit, Claude API</span><span class="sep">|</span><span class="i">July 2026, updated November 2026</span></p>
+    <p class="summary">A cross-border M&amp;A screening tool covering a universe of 37 companies across five markets (the US, Indonesia, Singapore, Malaysia, and Thailand), with USD normalization and an AI-generated deal memo. It also includes an AI agent that works from the other side of a deal: given a target, it builds a ranked, sourced map of public companies that could buy it.</p>
     <p class="links"><a href="https://edric-ma-screener.streamlit.app/" target="_blank">Live app ↗</a><span class="sep">|</span><a href="https://github.com/edricwidjajaliem-ux/ma-screener" target="_blank">GitHub ↗</a></p>
 
+    <p class="jump"><a href="#screener">The tool</a><span class="sep">·</span><a href="#honest">How the agent stays honest</a><span class="sep">·</span><a href="#akra">AKRA validation</a><span class="sep">·</span><a href="#limits">Limitations</a></p>
+
     <ul class="numbers">
-      <li><span class="k">Companies screened</span><span class="v">38</span></li>
+      <li><span class="k">Universe</span><span class="v">37 companies</span></li>
       <li><span class="k">Markets</span><span class="v">5</span></li>
-      <li><span class="k">Screening factors</span><span class="v">EV/EBITDA, growth, margin, leverage, market cap</span></li>
-      <li><span class="k">Currency handling</span><span class="v">Live USD normalization</span></li>
+      <li><span class="k">Screening factors</span><span class="v">EV/EBITDA, growth, margin, leverage, market cap; P/B and ROE for banks</span></li>
+      <li><span class="k">Currency handling</span><span class="v">USD normalization</span></li>
+      <li><span class="k">Buyer universe</span><span class="v">15 public US companies</span></li>
+      <li><span class="k">Agent sources</span><span class="v">SEC 10-K and 10-Q filings, Yahoo Finance</span></li>
     </ul>
 
     <h2>Why I built this</h2>
     <p>Most screening tools stop at the US or treat Southeast Asia as an afterthought. I wanted something that covers both on equal footing: screening for companies with a financial profile common among acquisition candidates, with currency-adjusted comparisons so a $2B Indonesian company and a $2B US company are compared in the same terms.</p>
-    <p>The tool started as a Google Colab prototype and was rebuilt into a modular three-file Streamlit app with FX normalization, CSV export, Claude API deal memo generation, and a public GitHub repo.</p>
+    <p>The tool started as a Google Colab prototype and was rebuilt into a modular Streamlit app. The agent came from a limit I found while pointing it at crypto and fintech deals: the screener's universe and target filters excluded plausible buyers. Rather than put AI on top of the wrong inputs, I built a separate buyer universe and an agent to research it.</p>
 
-    <h2>What it does</h2>
+    <h2 id="screener">What it does</h2>
     <ul class="plain">
-      <li>Screens 38 companies across five markets on market cap, EV/EBITDA, revenue growth, profit margin, and debt/equity at the same time.</li>
-      <li>Converts every market cap and revenue figure to USD using live FX rates via yFinance, since Southeast Asian figures come back in local currency.</li>
-      <li>Filters by geography and sector, with adjustable sliders for every screening factor.</li>
-      <li>Generates a structured preliminary deal memo via the Claude API for any company in the filtered results, covering company overview, acquisition rationale, key risks, and valuation range.</li>
-      <li>Exports all screened results as a CSV.</li>
+      <li>Screens companies across five markets on market cap, EV/EBITDA, revenue growth, profit margin, and debt/equity at the same time.</li>
+      <li>Screens banks and similar financials on price-to-book and ROE, because EV/EBITDA doesn't work when debt funds the business.</li>
+      <li>Converts every market cap and revenue figure to USD, since Southeast Asian figures come back in local currency.</li>
+      <li>Filters by geography and sector, with adjustable sliders for each screening factor.</li>
+      <li>Generates a preliminary deal memo via the Claude API for any company in the filtered results.</li>
+      <li>Exports screened results as a CSV.</li>
+      <li>Takes a target description and a deal size assumption, then shortlists buyers from a curated universe.</li>
+      <li>Researches each buyer in its latest 10-K and 10-Q, and pulls market data.</li>
+      <li>Answers five yes/no questions on strategic fit, backing each "yes" with a quote from a filing.</li>
+      <li>Calculates ability to pay and writes a ranked buyer memo with links to its sources.</li>
     </ul>
 
     <h2>The tool in action</h2>
@@ -77,23 +91,41 @@
       <img src="images/screener-preview-2.png" alt="M&amp;A screener showing the AI deal memo generator" />
     </div>
 
-    <h2>Validation: the AKRA deep-dive</h2>
+    <h2 id="honest">How the agent stays honest</h2>
+    <ul class="plain">
+      <li>Code fills in the numbers. Table figures come directly from the data, and the AI's text is checked so its figures trace back to what it retrieved.</li>
+      <li>Quotes are checked word for word. Code compares each quote with the filing it cites and builds the source list itself. A "yes" without a verified quote counts as "no".</li>
+      <li>Code calculates the fit score. The same answers always give the same score.</li>
+      <li>Banks and brokers are handled differently. Their reported cash includes client funding (JPMorgan shows $1.88T), so deals are sized against market cap rather than cash.</li>
+    </ul>
+
+    <h2 id="akra">Validation: the AKRA deep-dive</h2>
     <p>To check the tool wasn't a black box, I took one output, PT AKR Corporindo (AKRA.JK), an Indonesian energy distribution and logistics company, and built a full manual investment memo on top of it, sourced from the company's FY2025 annual report rather than relying on the AI draft alone.</p>
     <p>AKRA surfaced with 19% YoY revenue growth, a 7.4x EV/EBITDA multiple, and a net cash position. The process also exposed a data-quality issue I caught and corrected: the data provider reported about 34x debt/equity against the actual ~1.3x from the annual report. The memo also flagged a practical deal constraint: AKR's ownership is concentrated with a controlling family stake, so any real transaction would need negotiated buy-in rather than an open-market approach.</p>
+    <p>That issue shaped the agent: it recalculates debt/equity from each buyer's balance sheet and flags mismatches with the provider's figure.</p>
+
+    <h2>What live testing taught me</h2>
+    <p>Live testing exposed failures that mocked tests didn't. In one run, the AI used BNY's old ticker from memory, found no data, and scored it 1 out of 5. The ticker is now locked in code, and a buyer with no filing text gets no score, so a data gap can't read as a bad fit.</p>
 
     <h2>Built with</h2>
-    <p>Python, Pandas, Streamlit, yFinance, the Claude API, and live FX normalization.</p>
+    <p>Python, Pandas, Streamlit, yFinance, the Claude API, SEC EDGAR, Pydantic, and pytest. Developed with Claude Code as an AI coding assistant.</p>
 
-    <h2>Limitations</h2>
+    <h2 id="limits">Limitations</h2>
     <ul class="plain">
-      <li>Data refreshes every 5 minutes. Fundamentals like EV/EBITDA don't move meaningfully in that window, but live share prices may lag slightly.</li>
-      <li>The AI-generated memo is a first-pass draft based only on the metrics shown. It is not a substitute for real diligence, filings review, or comparable transaction analysis.</li>
-      <li>"Screened" means a company fits a common financial profile for acquisition candidates, not that it is an actual, confirmed target.</li>
+      <li>Yahoo Finance sometimes blocks the hosted app. When that happens, it shows saved data with its date until live data returns.</li>
+      <li>Live agent runs are turned off on the public app to protect API credits, so it shows a sample memo from a real run. That memo uses an illustrative target and deal size.</li>
+      <li>The agent covers public US buyers only. Private acquirers such as Ripple, Stripe, Kraken, and Fidelity can be among the most relevant, and adding them by hand is planned for the next version.</li>
+      <li>A verified quote shows the words are in the filing, not that the reasoning is right. Events after the latest filing aren't captured.</li>
+      <li>Banks are hard targets in practice: deals need regulatory approval, and foreign ownership rules may limit cross-border buyers.</li>
+      <li>The list of financials screened on book value is set by hand, and their P/B and ROE come from Yahoo and haven't been checked against annual reports.</li>
+      <li>AI-generated memos are first-pass drafts, not a substitute for real diligence or comparable transaction analysis.</li>
+      <li>"Screened" means a company fits a common financial profile, not that it is a confirmed target or an interested buyer.</li>
     </ul>
 
     <h2>Files and links</h2>
     <ul class="files">
       <li><a href="files/AKRA_Investment_Memo.pdf" target="_blank"><span>AKRA investment memo</span><span class="d">PDF, manual deep-dive</span></a></li>
+      <li><a href="https://github.com/edricwidjajaliem-ux/ma-screener/blob/main/docs/sample_buyer_memo.md" target="_blank"><span>Sample buyer memo</span><span class="d">Markdown, illustrative target</span></a></li>
       <li><a href="https://github.com/edricwidjajaliem-ux/ma-screener" target="_blank"><span>Source code</span><span class="d">GitHub</span></a></li>
       <li><a href="https://edric-ma-screener.streamlit.app/" target="_blank"><span>Live app</span><span class="d">Streamlit</span></a></li>
     </ul>
