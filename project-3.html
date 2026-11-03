@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet" />
   <style>
+    @view-transition { navigation: auto; }
+    @keyframes pagein { from { opacity: 0; } to { opacity: 1; } }
+    ::view-transition-old(root) { animation: .18s ease both fadeout; }
+    ::view-transition-new(root) { animation: .28s ease both pagein; }
+    @keyframes fadeout { to { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { ::view-transition-old(root), ::view-transition-new(root) { animation: none; } }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #f8f6f1; --ink: #1f4a39; --muted: #5f7a6d; --faint: #93a89d; --accent: #2c5f4a; }
     html { background: var(--bg); }

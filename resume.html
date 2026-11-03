@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet" />
   <style>
+    @view-transition { navigation: auto; }
+    @keyframes pagein { from { opacity: 0; } to { opacity: 1; } }
+    ::view-transition-old(root) { animation: .18s ease both fadeout; }
+    ::view-transition-new(root) { animation: .28s ease both pagein; }
+    @keyframes fadeout { to { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { ::view-transition-old(root), ::view-transition-new(root) { animation: none; } }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #f8f6f1; --ink: #1f4a39; --muted: #5f7a6d; --faint: #93a89d; --accent: #2c5f4a; --line: #dfe5df; }
     html { background: var(--bg); }
@@ -21,7 +27,7 @@
     .sub { font-size: 15px; color: var(--faint); margin-top: 2px; }
     .dl { font-size: 16px; font-weight: 500; color: var(--accent); border: 1px solid var(--accent); border-radius: 6px; padding: 6px 16px; transition: background .15s, color .15s; }
     .dl:hover { background: var(--accent); color: #fff; border-bottom-color: var(--accent); }
-    iframe { display: block; width: 100%; height: 1100px; border: 1px solid var(--line); border-radius: 4px; background: #fff; box-shadow: 0 6px 24px rgba(31,74,57,.08); }
+    iframe { opacity: 0; transition: opacity .35s ease; display: block; width: 100%; height: 1100px; border: 1px solid var(--line); border-radius: 4px; background: #fff; box-shadow: 0 6px 24px rgba(31,74,57,.08); }
     @media (max-width: 700px) { main { padding: 40px 16px 56px; } h1 { font-size: 34px; } iframe { height: 75vh; } }
   </style>
 </head>
@@ -35,7 +41,9 @@
       </div>
       <a class="dl" href="files/resume.pdf" download="Edric_Lim_Resume.pdf">Download PDF</a>
     </div>
-    <iframe src="files/resume.pdf#view=FitH" title="Edric Lim resume"></iframe>
+    <iframe src="files/resume.pdf#view=FitH" title="Edric Lim resume" onload="this.style.opacity=1"></iframe>
+    <noscript><style>iframe{opacity:1!important}</style></noscript>
   </main>
+  <script>setTimeout(function(){var f=document.querySelector("iframe");if(f)f.style.opacity=1;},1500);</script>
 </body>
 </html>
